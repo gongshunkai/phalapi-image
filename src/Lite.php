@@ -2,8 +2,6 @@
 namespace PhalApi\Image;
 
 use PhalApi\Exception\BadRequestException;
-use PhalApi\Image\Driver\Gd as DriverGd;
-use PhalApi\Image\Driver\Imagick as DriverImagick;
 
 /**
  * 2015/12/31 采用自ThinkPhP @喵了个咪<wenzhenxi@vip.qq.com>
@@ -53,10 +51,10 @@ class Lite
         /* 判断调用库的类型 */
         switch ($type) {
             case self::IMAGE_GD:
-                $class = 'DriverGd';
+                $class = 'PhalApi\Image\Driver\Gd';
                 break;
             case self::IMAGE_IMAGICK:
-                $class = 'DriverImagick';
+                $class = 'PhalApi\Image\Driver\Imagick';
                 break;
             default:
                 throw new BadRequestException('不支持的图片处理库类型', 1);

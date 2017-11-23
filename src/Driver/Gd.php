@@ -11,10 +11,9 @@
 // | ImageGd.class.php 2013-03-05
 // +----------------------------------------------------------------------
 
-namespace Image\Driver;
+namespace PhalApi\Image\Driver;
 
 use PhalApi\Exception\BadRequestException;
-use Image\Driver\GIF as DriverGIF;
 
 class Gd
 {
@@ -96,7 +95,7 @@ class Gd
 
         //打开图像
         if ('gif' == $this->info['type']) {
-            $class     = 'DriverGIF';
+            $class     = 'PhalApi\Image\Driver\GIF';
             $this->gif = new $class($imgname);
             $this->img = imagecreatefromstring($this->gif->image());
         } else {
@@ -330,7 +329,7 @@ class Gd
                     imagefill($img, 0, 0, $color);
 
                     //裁剪
-                    imagecopyresampled($img, $this->img, $posx, $posy, $x, $y, $neww, $newh, $w, $h);
+                    imagecopyresampled($img, $this->img, $posx, $posy, $x=0, $y=0, $neww, $newh, $w, $h);
                     imagedestroy($this->img); //销毁原图
                     $this->img = $img;
                 } while (!empty($this->gif) && $this->gifNext());
@@ -340,7 +339,7 @@ class Gd
                 return;
 
             /* 固定 */
-            case IMAGE_THUMB_FIXED:
+            case self::IMAGE_THUMB_FIXED:
                 $x = $y = 0;
                 break;
 
@@ -385,7 +384,7 @@ class Gd
         /* 设定水印位置 */
         switch ($locate) {
             /* 右下角水印 */
-            case this::IMAGE_WATER_SOUTHEAST:
+            case self::IMAGE_WATER_SOUTHEAST:
                 $x = $this->info['width'] - $info[0];
                 $y = $this->info['height'] - $info[1];
                 break;

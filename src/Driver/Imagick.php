@@ -11,7 +11,7 @@
 // | ImageImagick.class.php 2013-03-06
 // +----------------------------------------------------------------------
 
-namespace Image\Driver;
+namespace PhalApi\Image\Driver;
 
 use PhalApi\Exception\BadRequestException;
 

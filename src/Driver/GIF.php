@@ -11,7 +11,7 @@
 // | GIF.class.php 2013-03-09
 // +----------------------------------------------------------------------
 
-namespace Image\Driver;
+namespace PhalApi\Image\Driver;
 
 use PhalApi\Exception\BadRequestException;
 
