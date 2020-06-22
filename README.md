@@ -72,6 +72,7 @@ $size = \PhalApi\DI()->image->size(); // 返回图片的尺寸数组 0 图片宽
  * IMAGE_WATER_SOUTHWEST =   7 ; //左下角水印
  * IMAGE_WATER_SOUTH     =   8 ; //下居中水印
  * IMAGE_WATER_SOUTHEAST =   9 ; //右下角水印
+ * 传入数组array(x,y)             //自定义水印坐标位置
  */
 //添加图片水印
 \PhalApi\DI()->image->open('./1.jpg');
@@ -85,4 +86,7 @@ $size = \PhalApi\DI()->image->size(); // 返回图片的尺寸数组 0 图片宽
 //还可以支持水印图片的透明度（0~100，默认值是80），例如：
 // 在图片左上角添加水印（水印文件位于./logo.png） 水印图片的透明度为50 并保存为water.jpg
 \PhalApi\DI()->image->open('./1.jpg')->water('./logo.png', IMAGE_WATER_NORTHWEST, 50)->save("water.jpg");
+
+// 自定义水印坐标位置
+\PhalApi\DI()->image->open('./1.jpg')->water('./logo.png', array(1,1), 50)->save("water.jpg");
 ```
