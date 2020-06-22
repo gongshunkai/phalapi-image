@@ -85,4 +85,7 @@ $size = \PhalApi\DI()->image->size(); // 返回图片的尺寸数组 0 图片宽
 //还可以支持水印图片的透明度（0~100，默认值是80），例如：
 // 在图片左上角添加水印（水印文件位于./logo.png） 水印图片的透明度为50 并保存为water.jpg
 \PhalApi\DI()->image->open('./1.jpg')->water('./logo.png', IMAGE_WATER_NORTHWEST, 50)->save("water.jpg");
+
+//自定义水印坐标位置，传入数组array(x,y) 例如：
+\PhalApi\DI()->image->water('./logo.png', array(50,50))->save("water.gif");
 ```
